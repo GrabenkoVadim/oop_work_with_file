@@ -6,7 +6,6 @@ public class WorkWithFile {
     public void getStatistic(String fromFileName, String toFileName) {
         int sumOfBuys = 0;
         int sumOfSupplays = 0;
-        File importFile = new File(toFileName);
         String[] strings = readFromFile(fromFileName);
         for (String string : strings) {
             String[] splitData = string.split(",");
@@ -39,14 +38,12 @@ public class WorkWithFile {
         return stringBuilder.toString().split(System.lineSeparator());
     }
     private String makeReport(int buySum, int supplySum) {
-        return new StringBuilder()
-                .append("supply").append(",")
-                .append(supplySum).append(System.lineSeparator())
-                .append("buy").append(",")
-                .append(buySum).append(System.lineSeparator())
-                .append("result").append(",")
-                .append(supplySum - buySum).append(System.lineSeparator())
-                .toString();
+        return "supply" + "," +
+                supplySum + System.lineSeparator() +
+                "buy" + "," +
+                buySum + System.lineSeparator() +
+                "result" + "," +
+                (supplySum - buySum) + System.lineSeparator();
     }
 
     private void writeToFile(String fileName, String data) {
